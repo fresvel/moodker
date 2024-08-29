@@ -5,11 +5,11 @@ const title={
 }
 
 const topic={
-    "unit":"",
-    "name":"",
+    "parent":"",
+    "label":"",
     "main":{"name":"","url":""},
     "more":{"name":"","url":""},
-    "video":{"name":"","title":"","url":"", "desc":"","save":[]},
+    "video":{"name":"","title":"","url":"", "desc":"","saves":[]},
     "repo":{"name":"","title":"","url":"", "desc":""}
 }
 

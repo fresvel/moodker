@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5">
-      <h4>Configurar un nuevo tema</h4>
+      <h4>Configurar Nuevo Título</h4>
       <form @submit.prevent="submitData">
         <!-- Title Section -->
         <div class="row mb-3">
@@ -133,17 +133,6 @@
         <!-- Submit Button -->
         <button type="button" class="btn btn-success" @click="createTitle()">Crear Título</button>
       </form>
-  
-      <div class="mt-5">
-        <h4>Datos Ingresados:</h4>
-        <pre>
-          Número: {{ title.lema }} {{ arabicToRoman(title.number) }}
-          Nombre: {{ title.name }}
-          RDA:
-          Curso: {{ title.rda.course }}
-          Programa: {{ title.rda.program }}
-        </pre>
-      </div>
     </div>
   </template>
   
