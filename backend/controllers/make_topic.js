@@ -2,6 +2,10 @@ export const make_topic=(req, res)=>{
 
 
     const set_topic=req.body
+    set_topic.main.url=obtenerUrl(set_topic.main.url)
+    set_topic.more.url=obtenerUrl(set_topic.more.url)
+    
+    
     console.log(set_topic)
     let arr_saves=""
     for(const el of set_topic.video.saves){
@@ -15,7 +19,7 @@ export const make_topic=(req, res)=>{
     }
 
     const topic =`<!-- Identidicación de la barra de título [bar-n]x2-->
-    <div class="accordion" id="recpre-1" data-toggle="collapse" data-target="#itema-titulo" aria-expanded="true" aria-controls="bar-a">
+    <div class="accordion" id="recpre-1" data-toggle="collapse" data-target="#item${set_topic.number}-titulo" aria-expanded="true" aria-controls="bar-a">
         <div class="etiqueta-moodle" style="display:flex;flex-direction:row;border-radius:10px;overflow:hidden;height:70px;">
             <div class="c1" style="display:flex;align-items:center;width:40%;background-color:#2277AA;border-radius:10px 0 0 10px;font-size:20px; height: 50px; color:#FFFFFF;">
                 <svg style="height: 70px;margin-right:20px; margin-top:20px" class="pill" viewBox="0 0 70 74.42">
@@ -29,7 +33,7 @@ export const make_topic=(req, res)=>{
     </div>
 
     <!-- Identidicación de la barra de título [bar-n]-->
-    <div id="itema-titulo" class="collapse show" aria-labelledby="headingOne" data-parent="#recpre-1" style="">
+    <div id="item${set_topic.number}-titulo" class="collapse show" aria-labelledby="headingOne" data-parent="#recpre-1" style="">
 
         <div class="container">
             <div class="row">
@@ -38,7 +42,7 @@ export const make_topic=(req, res)=>{
                         <div class="box">
                             <div class="title">
                                 <span class="block" style="background:#1572cf; border-radius:15px; transform: translate(130px, 37px);"></span>
-                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#itema-rp" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
+                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#item${set_topic.number}-rp" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
 
 
                                     <icono class="fa-stack">
@@ -67,7 +71,7 @@ export const make_topic=(req, res)=>{
                         <div class="box">
                             <div class="title">
                                 <span class="block" style="background:#2fc9c9; border-radius:15px; transform: translate(130px, 37px);"></span>
-                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#itema-ro" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
+                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#item${set_topic.number}-ro" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
                                     <icono class="fa-stack">
                                         <i style="font-size: 2em; transform: translate(64px, 36px);" class="fa fa-graduation-cap fa-stack-1x fa-inverse"></i>
                                         <svg style="height: 70px; margin-left:25px; margin-right:-70px; margin-top:20px;" class="pill" viewBox="0 0 380 65">
@@ -95,7 +99,7 @@ export const make_topic=(req, res)=>{
                         <div class="box">
                             <div class="title">
                                 <span class="block" style="background:#7172cf; border-radius:15px; transform: translate(130px, 37px);"></span>
-                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#itema-vc" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
+                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#item${set_topic.number}-vc" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
 
                                     <icono class="fa-stack">
                                         <i style="font-size: 2em; transform: translate(64px, 36px);" class="fa fa-laptop fa-stack-1x fa-inverse"></i>
@@ -122,7 +126,7 @@ export const make_topic=(req, res)=>{
                         <div class="box">
                             <div class="title">
                                 <span class="block" style="background:#77dd77; border-radius:15px; transform: translate(130px, 37px);"></span>
-                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#itema-re" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
+                                <button class="etiqueta-moodle" type="button" data-toggle="modal" data-target="#item${set_topic.number}-re" aria-expanded="false" aria-controls="tag-a4" style="background: none; border: none; cursor: pointer; padding: 0;">
 
                                     <icono class="fa-stack">
                                         <i style="font-size: 2em; transform: translate(64px, 36px);" class="fa fa-cubes fa-stack-1x fa-inverse"></i>
@@ -165,7 +169,7 @@ export const make_topic=(req, res)=>{
 
 
     <!-- Identidicación de la etiqueta de cada modal con [md-?]-->
-    <div class="modal fade" id="itema-rp" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal fade" id="item${set_topic.number}-rp" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog" role="document" style=" max-width: 90%; margin: 1.75rem auto;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,7 +189,7 @@ export const make_topic=(req, res)=>{
 
 
     <!-- Identidicación de la etiqueta de cada modal con [md-?]-->
-    <div class="modal fade" id="itema-ro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="item${set_topic.number}-ro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" style=" max-width: 90%; margin: 1.75rem auto;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -205,7 +209,7 @@ export const make_topic=(req, res)=>{
 
 
     <!-- Identidicación de la etiqueta de cada modal con [md-?]-->
-    <div class="modal fade" id="itema-vc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="item${set_topic.number}-vc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" style=" max-width: 90%; margin: 1.75rem auto;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -349,7 +353,7 @@ export const make_topic=(req, res)=>{
     </div>
 
     <!-- Identidicación de la etiqueta de cada modal con [md-?]-->
-    <div class="modal fade" id="itema-re" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="item${set_topic.number}-re" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document" style=" max-width: 90%; margin: 1.75rem auto;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -489,3 +493,20 @@ export const make_topic=(req, res)=>{
     res.json({topic})
 
 }
+
+const obtenerUrl=(dato)=> {
+    // Verifica si es una URL válida
+    try {
+      new URL(dato);
+      return dato; // Es una URL válida
+    } catch (_) {
+      // Si no es una URL válida, verifica si es un iframe
+      if (dato.startsWith('<iframe')) {
+        const match = dato.match(/src="([^"]*)"/);
+        if (match) {
+          return match[1]; // Retorna la URL del src
+        }
+      }
+      return null; // No es ni una URL válida ni un iframe
+    }
+  }

@@ -5,6 +5,7 @@ const title={
 }
 
 const topic={
+    "number":0,
     "parent":"",
     "label":"",
     "main":{"name":"","url":""},
@@ -17,5 +18,6 @@ const activity={
     "type":"",
     "title":"",
     "desc":"",
-    "url":""
+    "url":"",
+    "fecha":""
 }

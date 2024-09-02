@@ -1,28 +1,4 @@
-export const make_activity=(req, res)=>{
-
-    const set_activity=req.body
-
-    console.log(set_activity.fecha)
-    let desc_main=""
-    let desc_more=""
-    let max_size;
-    const nlines=8- set_activity.desc.split('\n').length
-    max_size=nlines*70
-    
-    if(set_activity.desc.length>max_size){
-        let i_space=set_activity.desc.lastIndexOf(' ')
-        let i_line=set_activity.desc.lastIndexOf(' ')
-        let index=Math.max(i_line, i_space)
-        desc_main=set_activity.desc.substring(0,index)
-        desc_more=set_activity.desc.substring(max_size)
-    }else{
-        desc_main=set_activity.desc
-    }
-
-    desc_main.replace(/\n/g,'<br>')
-    desc_more.replace(/\n/g,'<br>')
-
-    const activity=`<!--CAMBIO DE ATRIBUTOS Aquí hay 2 datos que hay que sustituir, vamos a cambiar lo que este entre comillas de cada uno de ellos, ya que cada recurso tiene que tener un nombre único, el id por defecto viene con el nombre "cambiarv-1" para el primer recurso. Para cada nuevo recurso que creemos en la semana de clases debemos cambiar el número por el siguiente, es decir para el segundo recurso tipo video el id debe ser: "cambiarv-2", para el tercer recurso debe ser: "cambiarv-3". En la siguiente línea debemos cambiar en 2 lugares con el mismo número. -->
+<!--CAMBIO DE ATRIBUTOS Aquí hay 2 datos que hay que sustituir, vamos a cambiar lo que este entre comillas de cada uno de ellos, ya que cada recurso tiene que tener un nombre único, el id por defecto viene con el nombre "cambiarv-1" para el primer recurso. Para cada nuevo recurso que creemos en la semana de clases debemos cambiar el número por el siguiente, es decir para el segundo recurso tipo video el id debe ser: "cambiarv-2", para el tercer recurso debe ser: "cambiarv-3". En la siguiente línea debemos cambiar en 2 lugares con el mismo número. -->
 <div class="accordion inttit" id="recpdf-1" data-toggle="collapse" data-target="#cambiarpdf-1" aria-expanded="true" aria-controls="#cambiarpdf-1">
 
 
@@ -39,7 +15,7 @@ export const make_activity=(req, res)=>{
             </svg>${set_activity.type}
         </div>
 
-        <div class="c2" style="width:30%;background-color:#137cdc22;border-radius:0 10px 10px 0;text-align:center;display:flex;justify-content:center;align-items:center;font-size:20px; height: 50px; color:#0a0a0a77"><b>ENTREGA:&nbsp</b> ${set_activity.fecha}<br></div>
+        <div class="c2" style="width:30%;background-color:#137cdc22;border-radius:0 10px 10px 0;text-align:center;display:flex;justify-content:center;align-items:center;font-size:20px; height: 50px; color:#0a0a0a77"><b>ENTREGA: </b> ${set_activity.fecha}<br></div>
 
         <div class="c2" style="width:30%;background-color:#137cdcaa;border-radius:10px 10px 10px 10px;text-align:center;display:flex;justify-content:center;align-items:center;font-size:20px; height: 50px; color:#ffffff" data-toggle="modal" data-target="#tarea-01"><span>Indicaciones</span></div>
 
@@ -212,9 +188,4 @@ export const make_activity=(req, res)=>{
             </div>
         </div>
     </div>
-</div>`
-
-    res.json({activity})
-
-}
-
+</div>

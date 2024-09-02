@@ -4,6 +4,15 @@
       <form @submit.prevent="submitData">
         <!-- Title Section -->
         <div class="row m-3">
+                <div class="col-2">
+                  <label for="number">N°</label>
+                  <input 
+                  type="number"
+                  class="form-control"
+                  id="number"
+                  v-model="topic.number"
+                  />
+                </div>
 
                 <div class="col-1">
                     <label for="parent" class="form-label">Título Padre</label>
@@ -176,7 +185,7 @@
               </div>
               <div class="col-4">
                     <label for="fecha" class="form-label">Selecciona una fecha:</label>
-                    <datepicker v-model="sdate"></datepicker>
+                    <datepicker  id="fecha" v-model="sdate"></datepicker>
               </div>
               <div class="col-3">
                 <button class="btn btn-secondary" @click="addDate()">Añadir</button>
@@ -192,7 +201,7 @@
             <div class="row">
               <ul class="mt-3 list-group">
                   <li v-for="(item, index) in arr_saves" :key="index" class="list-group-item d-flex justify-content-between align-items-center" >
-                    <div class="text-justify">{{ item }}</div>
+                    <div class="text-justify"><h5>{{ item.date}}</h5> {{ item.url }}</div>
                     <button type="button" class="btn btn-danger btn-sm" @click="removeSave(index)">
                     Eliminar
                     </button>
@@ -270,6 +279,7 @@
 
 <div class="m-5">
   <pre>
+    Número: {{ topic.number}}
     Titulo:{{topic.parent}}
     Tema: {{ topic.label }}
     Main
@@ -313,6 +323,7 @@
   const url_saves=ref('')  
   const arr_saves=ref([])
   const topic = ref({
+    number:0,
     parent:"",
     label:"",
     main:
@@ -348,7 +359,7 @@ En esta sección también se colocarán los enlaces a las respectivas grabacione
     const day = String(sdate.value.getDate()).padStart(2, '0');
     const month = String(sdate.value.getMonth() + 1).padStart(2, '0'); // Los meses en JavaScript son de 0 a 11
     const year = sdate.value.getFullYear();
-    arr_saves.value.push({url:url_saves, date:`${day}-${month}-${year}`})
+    arr_saves.value.push({url:url_saves.value, date:`${day}-${month}-${year}`})
     console.log(arr_saves.value)
     
   }
